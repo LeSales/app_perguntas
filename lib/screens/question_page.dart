@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_perguntas/questions.dart';
 
 class QuestionPage extends StatelessWidget {
-  const QuestionPage({Key? key}) : super(key: key);
+  var selectedQuestion = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -9,6 +10,11 @@ class QuestionPage extends StatelessWidget {
       "Qual a sua cor favorita?",
       "Qual o seu animal favorito?",
     ];
+
+    void answerQuestion() {
+      selectedQuestion++;
+      print(selectedQuestion);
+    }
 
     return WillPopScope(
       onWillPop: () async {
@@ -26,20 +32,22 @@ class QuestionPage extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(questions[0]),
+                  Question(
+                    text: questions[0],
+                  ),
                   SizedBox(
                     height: 12,
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: answerQuestion,
                     child: Text("Resposta 1"),
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: answerQuestion,
                     child: Text("Resposta 2"),
                   ),
                   ElevatedButton(
-                    onPressed: () {},
+                    onPressed: answerQuestion,
                     child: Text("Resposta 3"),
                   ),
                 ],
