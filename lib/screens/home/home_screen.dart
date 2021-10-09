@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:introduction_screen/introduction_screen.dart';
-import 'package:projeto_perguntas/screens/counter_page.dart';
+import 'package:lottie/lottie.dart';
+import 'package:projeto_perguntas/screens/question_page.dart';
 
 //import '../question_page.dart';
 
@@ -24,9 +25,7 @@ class _HomeScreenState extends State<HomeScreen> {
         title: "Bem vindo ao Quiz!!",
         body: "Aqui você poderá testar seus conhecimentos",
         image: Center(
-          child: Image(
-            image: AssetImage('assets/images/quiz1.PNG'),
-          ),
+          child: Lottie.asset('assets/lottie/33011-question.json'),
         ),
         decoration: const PageDecoration(
           titleTextStyle: TextStyle(color: Colors.orange),
@@ -37,9 +36,7 @@ class _HomeScreenState extends State<HomeScreen> {
         title: "Corra contra o tempo!!",
         body: "Seu desafio é responder correntamente dentro do tempo",
         image: Center(
-          child: Image(
-            image: AssetImage('assets/images/quiz2.PNG'),
-          ),
+          child: Lottie.asset('assets/lottie/38533-timer-icons.json'),
         ),
         decoration: const PageDecoration(
           titleTextStyle: TextStyle(color: Colors.orange),
@@ -51,9 +48,7 @@ class _HomeScreenState extends State<HomeScreen> {
         body:
             "Responda tudo corretamente para obter mais pontos e ficar em primeiro lugar!!",
         image: Center(
-          child: Image(
-            image: AssetImage('assets/images/quiz3.PNG'),
-          ),
+          child: Lottie.asset('assets/lottie/43444-trophy-animation.json'),
         ),
         decoration: const PageDecoration(
           titleTextStyle: TextStyle(color: Colors.orange),
@@ -73,7 +68,7 @@ class _HomeScreenState extends State<HomeScreen> {
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (_) => CounterPage(),
+              builder: (_) => QuestionPage(),
             ),
           );
         },
