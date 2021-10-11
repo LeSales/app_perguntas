@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_perguntas/screens/question/widget/answers.dart';
 import 'package:projeto_perguntas/screens/question/widget/questions.dart';
 
 class QuestionPage extends StatefulWidget {
@@ -47,18 +48,9 @@ class _QuestionPageState extends State<QuestionPage> {
                   SizedBox(
                     height: 12,
                   ),
-                  ElevatedButton(
-                    onPressed: answerQuestion,
-                    child: Text("Resposta 1"),
-                  ),
-                  ElevatedButton(
-                    onPressed: answerQuestion,
-                    child: Text("Resposta 2"),
-                  ),
-                  ElevatedButton(
-                    onPressed: answerQuestion,
-                    child: Text("Resposta 3"),
-                  ),
+                  Answers(answer: "Resposta 1111", onSelected: () {}),
+                  Answers(answer: "Resposta 2222", onSelected: () {}),
+                  Answers(answer: "Resposta 3333", onSelected: () {}),
                 ],
               ),
             ),
