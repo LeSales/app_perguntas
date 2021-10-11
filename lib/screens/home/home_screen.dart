@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_perguntas/screens/instruction_page.dart';
-import 'package:projeto_perguntas/screens/ranking_page.dart';
+import 'package:projeto_perguntas/screens/instruction/instruction_page.dart';
+import 'package:projeto_perguntas/screens/ranking/ranking_page.dart';
 
-import '../question_page.dart';
+import '../question/question_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);

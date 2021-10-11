@@ -1,8 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_perguntas/questions.dart';
+import 'package:projeto_perguntas/screens/question/widget/questions.dart';
 
-class QuestionPage extends StatelessWidget {
-  var selectedQuestion = 0;
+class QuestionPage extends StatefulWidget {
+  @override
+  State<QuestionPage> createState() => _QuestionPageState();
+}
+
+class _QuestionPageState extends State<QuestionPage> {
+  int selectedQuestion = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +17,11 @@ class QuestionPage extends StatelessWidget {
     ];
 
     void answerQuestion() {
-      selectedQuestion++;
+      if (selectedQuestion < questions.length - 1) {
+        setState(() {
+          selectedQuestion++;
+        });
+      }
       print(selectedQuestion);
     }
 
@@ -33,7 +42,7 @@ class QuestionPage extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Question(
-                    text: questions[0],
+                    text: questions[selectedQuestion],
                   ),
                   SizedBox(
                     height: 12,
