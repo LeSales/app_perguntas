@@ -73,35 +73,7 @@ class _IntroductionPageState extends State<IntroductionPage> {
           );
         },
         showNextButton: false,
-      )
-
-      /* Padding(
-        padding: EdgeInsets.all(12),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text(questions[0]),
-              SizedBox(
-                height: 12,
-              ),
-              ElevatedButton(
-                onPressed: () {},
-                child: Text("Resposta 1"),
-              ),
-              ElevatedButton(
-                onPressed: () {},
-                child: Text("Resposta 2"),
-              ),
-              ElevatedButton(
-                onPressed: () {},
-                child: Text("Resposta 3"),
-              ),
-            ],
-          ),
-        ),
-      ) */
-      ,
+      ),
     );
   }
 }

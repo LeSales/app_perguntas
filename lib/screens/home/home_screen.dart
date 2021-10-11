@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:projeto_perguntas/screens/instruction_page.dart';
+import 'package:projeto_perguntas/screens/ranking_page.dart';
+
+import '../question_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -23,9 +27,16 @@ class HomePage extends StatelessWidget {
                   width: MediaQuery.of(context).size.width * 0.5,
                   height: 46,
                   child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => QuestionPage(),
+                          ),
+                        );
+                      },
                       child: const Text(
-                        "Botão",
+                        "jogar",
                         style: TextStyle(color: Colors.white),
                       )),
                 ),
@@ -37,9 +48,16 @@ class HomePage extends StatelessWidget {
                   width: MediaQuery.of(context).size.width * 0.5,
                   height: 46,
                   child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => RankingPage(),
+                          ),
+                        );
+                      },
                       child: const Text(
-                        "Botão",
+                        "Ranking",
                         style: TextStyle(color: Colors.white),
                       )),
                 ),
@@ -51,9 +69,16 @@ class HomePage extends StatelessWidget {
                   width: MediaQuery.of(context).size.width * 0.5,
                   height: 46,
                   child: TextButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (_) => InstructionPage(),
+                          ),
+                        );
+                      },
                       child: const Text(
-                        "Botão",
+                        "Instruções",
                         style: TextStyle(color: Colors.white),
                       )),
                 ),
