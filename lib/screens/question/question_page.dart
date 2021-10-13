@@ -60,11 +60,9 @@ class _QuestionPageState extends State<QuestionPage> {
                         Question(
                           text:
                               _questions[_selectedQuestion]['text'].toString(),
+                          answer: answer,
+                          onSelected: answerQuestion,
                         ),
-                        ...answer
-                            .map((t) =>
-                                Answers(answer: t, onSelected: answerQuestion))
-                            .toList(),
                         SizedBox(
                           height: 12,
                         ),
