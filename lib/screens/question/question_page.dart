@@ -13,8 +13,14 @@ class _QuestionPageState extends State<QuestionPage> {
   @override
   Widget build(BuildContext context) {
     final questions = [
-      "Qual a sua cor favorita?",
-      "Qual o seu animal favorito?",
+      {
+        'text': "Qual a sua cor favorita?",
+        'answer': ['Vermelho', 'Amarelo', 'Azul', 'Verde']
+      },
+      {
+        'text': "Qual o seu animal favorito?",
+        'answer': ['Macaco', 'Leão', 'Cobra', 'Papagaio']
+      },
     ];
 
     void answerQuestion() {
@@ -23,8 +29,12 @@ class _QuestionPageState extends State<QuestionPage> {
           selectedQuestion++;
         });
       }
-      print(selectedQuestion);
     }
+
+    List<String> answer = questions[selectedQuestion].cast()['answer'];
+    List<Widget> widgets = answer
+        .map((t) => Answers(answer: t, onSelected: answerQuestion))
+        .toList();
 
     return WillPopScope(
       onWillPop: () async {
@@ -43,14 +53,12 @@ class _QuestionPageState extends State<QuestionPage> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Question(
-                    text: questions[selectedQuestion],
+                    text: questions[selectedQuestion]['text'].toString(),
                   ),
+                  ...widgets,
                   SizedBox(
                     height: 12,
                   ),
-                  Answers(answer: "Resposta 1111", onSelected: () {}),
-                  Answers(answer: "Resposta 2222", onSelected: () {}),
-                  Answers(answer: "Resposta 3333", onSelected: () {}),
                 ],
               ),
             ),
