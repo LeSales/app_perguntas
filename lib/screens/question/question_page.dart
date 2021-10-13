@@ -32,9 +32,6 @@ class _QuestionPageState extends State<QuestionPage> {
     }
 
     List<String> answer = questions[selectedQuestion].cast()['answer'];
-    List<Widget> widgets = answer
-        .map((t) => Answers(answer: t, onSelected: answerQuestion))
-        .toList();
 
     return WillPopScope(
       onWillPop: () async {
@@ -55,7 +52,10 @@ class _QuestionPageState extends State<QuestionPage> {
                   Question(
                     text: questions[selectedQuestion]['text'].toString(),
                   ),
-                  ...widgets,
+                  ...answer
+                      .map(
+                          (t) => Answers(answer: t, onSelected: answerQuestion))
+                      .toList(),
                   SizedBox(
                     height: 12,
                   ),
