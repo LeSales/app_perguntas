@@ -11,9 +11,18 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("Quiz"),
-        automaticallyImplyLeading: false,
-      ),
+          title: const Text("Quiz"),
+          automaticallyImplyLeading: false,
+          actions: [
+            IconButton(
+              icon: Icon(Icons.person),
+              onPressed: () {},
+            ),
+            IconButton(
+              icon: Icon(Icons.fireplace_sharp),
+              onPressed: () {},
+            ),
+          ]),
       body: Center(
         child: Padding(
           padding: const EdgeInsets.only(bottom: 50),
