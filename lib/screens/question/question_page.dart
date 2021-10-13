@@ -1,37 +1,44 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_perguntas/screens/question/widget/answers.dart';
 import 'package:projeto_perguntas/screens/question/widget/questions.dart';
+import 'package:projeto_perguntas/screens/question/widget/result.dart';
 
 class QuestionPage extends StatefulWidget {
   @override
   State<QuestionPage> createState() => _QuestionPageState();
 }
 
+final _questions = const [
+  {
+    'text': "Qual a sua cor favorita?",
+    'answer': ['Vermelho', 'Amarelo', 'Azul', 'Verde']
+  },
+  {
+    'text': "Qual o seu animal favorito?",
+    'answer': ['Macaco', 'Leão', 'Cobra', 'Papagaio']
+  },
+];
+
 class _QuestionPageState extends State<QuestionPage> {
-  int selectedQuestion = 0;
+  int _selectedQuestion = 0;
+
+  bool get haveSelectQuestion {
+    return _selectedQuestion < _questions.length;
+  }
 
   @override
   Widget build(BuildContext context) {
-    final questions = [
-      {
-        'text': "Qual a sua cor favorita?",
-        'answer': ['Vermelho', 'Amarelo', 'Azul', 'Verde']
-      },
-      {
-        'text': "Qual o seu animal favorito?",
-        'answer': ['Macaco', 'Leão', 'Cobra', 'Papagaio']
-      },
-    ];
-
     void answerQuestion() {
-      if (selectedQuestion < questions.length - 1) {
+      if (_selectedQuestion < _questions.length) {
         setState(() {
-          selectedQuestion++;
+          _selectedQuestion++;
         });
       }
     }
 
-    List<String> answer = questions[selectedQuestion].cast()['answer'];
+    List<String> answer = haveSelectQuestion
+        ? _questions[_selectedQuestion].cast()['answer']
+        : [];
 
     return WillPopScope(
       onWillPop: () async {
@@ -42,28 +49,31 @@ class _QuestionPageState extends State<QuestionPage> {
           title: Text("Questions"),
           automaticallyImplyLeading: false,
         ),
-        body: Center(
-          child: Padding(
-            padding: EdgeInsets.all(12),
-            child: Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Question(
-                    text: questions[selectedQuestion]['text'].toString(),
+        body: haveSelectQuestion
+            ? Center(
+                child: Padding(
+                  padding: EdgeInsets.all(12),
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Question(
+                          text:
+                              _questions[_selectedQuestion]['text'].toString(),
+                        ),
+                        ...answer
+                            .map((t) =>
+                                Answers(answer: t, onSelected: answerQuestion))
+                            .toList(),
+                        SizedBox(
+                          height: 12,
+                        ),
+                      ],
+                    ),
                   ),
-                  ...answer
-                      .map(
-                          (t) => Answers(answer: t, onSelected: answerQuestion))
-                      .toList(),
-                  SizedBox(
-                    height: 12,
-                  ),
-                ],
-              ),
-            ),
-          ),
-        ),
+                ),
+              )
+            : Result(),
       ),
     );
   }
