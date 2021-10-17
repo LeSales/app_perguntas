@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:projeto_perguntas/screens/instruction/instruction_page.dart';
+import 'package:projeto_perguntas/screens/profile/profile.dart';
 import 'package:projeto_perguntas/screens/ranking/ranking_page.dart';
 
 import '../question/question_page.dart';
@@ -16,11 +17,25 @@ class HomePage extends StatelessWidget {
           actions: [
             IconButton(
               icon: Icon(Icons.person),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => Profile(),
+                  ),
+                );
+              },
             ),
             IconButton(
               icon: Icon(Icons.fireplace_sharp),
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => RankingPage(),
+                  ),
+                );
+              },
             ),
           ]),
       body: Center(
