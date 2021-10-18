@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:projeto_perguntas/screens/question/widget/answers.dart';
 import 'package:projeto_perguntas/screens/question/widget/questions.dart';
 import 'package:projeto_perguntas/screens/question/widget/result.dart';
+import 'package:projeto_perguntas/screens/quiz/quiz.dart';
 
 class QuestionPage extends StatefulWidget {
   @override
@@ -36,10 +37,6 @@ class _QuestionPageState extends State<QuestionPage> {
       }
     }
 
-    List<String> answer = haveSelectQuestion
-        ? _questions[_selectedQuestion].cast()['answer']
-        : [];
-
     return WillPopScope(
       onWillPop: () async {
         return false;
@@ -50,26 +47,10 @@ class _QuestionPageState extends State<QuestionPage> {
           automaticallyImplyLeading: false,
         ),
         body: haveSelectQuestion
-            ? Center(
-                child: Padding(
-                  padding: EdgeInsets.all(12),
-                  child: Center(
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Question(
-                          text:
-                              _questions[_selectedQuestion]['text'].toString(),
-                          answer: answer,
-                          onSelected: answerQuestion,
-                        ),
-                        SizedBox(
-                          height: 12,
-                        ),
-                      ],
-                    ),
-                  ),
-                ),
+            ? Quiz(
+                questions: _questions,
+                selectedQuestion: _selectedQuestion,
+                answerQuestion: answerQuestion,
               )
             : Result(),
       ),
