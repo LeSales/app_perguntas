@@ -3,7 +3,7 @@ import 'package:projeto_perguntas/screens/question/widget/answers.dart';
 
 class Question extends StatelessWidget {
   final String text;
-  final List<String> answer;
+  final List<Map<String, Object>> answer;
   final Function() onSelected;
 
   Question({
@@ -23,7 +23,9 @@ class Question extends StatelessWidget {
             children: [
               Text(text),
               ...answer
-                  .map((t) => Answers(answer: t, onSelected: onSelected))
+                  .map((answer) => Answers(
+                      answer: answer['text'].toString(),
+                      onSelected: onSelected))
                   .toList(),
               SizedBox(
                 height: 12,

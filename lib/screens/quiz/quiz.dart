@@ -18,7 +18,7 @@ class Quiz extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    List<String> answer =
+    List<Map<String, Object>> answer =
         haveSelectQuestion ? questions[selectedQuestion].cast()['answer'] : [];
 
     return Center(

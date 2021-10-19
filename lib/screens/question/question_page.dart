@@ -12,11 +12,45 @@ class QuestionPage extends StatefulWidget {
 final _questions = const [
   {
     'text': "Qual a sua cor favorita?",
-    'answer': ['Vermelho', 'Amarelo', 'Azul', 'Verde']
+    'answer': [
+      {
+        'text': 'Vermelho',
+        'point': 10,
+      },
+      {
+        'text': 'Amarelo',
+        'point': 5,
+      },
+      {
+        'text': 'Azul',
+        'point': 3,
+      },
+      {
+        'text': 'Verde',
+        'point': 1,
+      },
+    ],
   },
   {
     'text': "Qual o seu animal favorito?",
-    'answer': ['Macaco', 'Leão', 'Cobra', 'Papagaio']
+    'answer': [
+      {
+        'text': 'Macaco',
+        'point': 10,
+      },
+      {
+        'text': 'Leão',
+        'point': 5,
+      },
+      {
+        'text': 'Cobra',
+        'point': 3,
+      },
+      {
+        'text': 'Papagaio',
+        'point': 1,
+      },
+    ],
   },
 ];
 
