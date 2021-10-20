@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_perguntas/screens/question/widget/answers.dart';
-import 'package:projeto_perguntas/screens/question/widget/questions.dart';
 import 'package:projeto_perguntas/screens/question/widget/result.dart';
 import 'package:projeto_perguntas/screens/quiz/quiz.dart';
 
