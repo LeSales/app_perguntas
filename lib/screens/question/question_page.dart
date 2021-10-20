@@ -56,6 +56,7 @@ final _questions = const [
 
 class _QuestionPageState extends State<QuestionPage> {
   int _selectedQuestion = 0;
+  int _points = 0;
 
   bool get haveSelectQuestion {
     return _selectedQuestion < _questions.length;
@@ -63,10 +64,12 @@ class _QuestionPageState extends State<QuestionPage> {
 
   @override
   Widget build(BuildContext context) {
-    void answerQuestion() {
-      if (_selectedQuestion < _questions.length) {
+    void answerQuestion(int point) {
+      if (haveSelectQuestion) {
         setState(() {
           _selectedQuestion++;
+          _points += point;
+          print(_points);
         });
       }
     }

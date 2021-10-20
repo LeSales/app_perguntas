@@ -4,7 +4,7 @@ import 'package:projeto_perguntas/screens/question/widget/questions.dart';
 class Quiz extends StatelessWidget {
   final List<Map<String, Object>> questions;
   final int selectedQuestion;
-  final void Function() answerQuestion;
+  final void Function(int) answerQuestion;
 
   Quiz({
     required this.questions,
@@ -21,6 +21,8 @@ class Quiz extends StatelessWidget {
     List<Map<String, Object>> answer =
         haveSelectQuestion ? questions[selectedQuestion].cast()['answer'] : [];
 
+    int point = int.parse(questions[selectedQuestion]['point'].toString());
+
     return Center(
       child: Padding(
         padding: EdgeInsets.all(12),
@@ -31,7 +33,7 @@ class Quiz extends StatelessWidget {
               Question(
                 text: questions[selectedQuestion]['text'].toString(),
                 answer: answer,
-                onSelected: answerQuestion,
+                onSelected: () => answerQuestion(point),
               ),
               SizedBox(
                 height: 12,
