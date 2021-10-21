@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:projeto_perguntas/screens/question/widget/questions.dart';
+import 'package:projeto_perguntas/screens/question/widget/answers.dart';
+import 'package:projeto_perguntas/screens/question/widget/question.dart';
 
 class Quiz extends StatelessWidget {
   final List<Map<String, Object>> questions;
   final int selectedQuestion;
-  final void Function(int) answerQuestion;
+  final void Function() answerQuestion;
 
   Quiz({
     required this.questions,
@@ -21,27 +22,14 @@ class Quiz extends StatelessWidget {
     List<Map<String, Object>> answer =
         haveSelectQuestion ? questions[selectedQuestion].cast()['answer'] : [];
 
-    int point = int.parse(questions[selectedQuestion]['point'].toString());
-
-    return Center(
-      child: Padding(
-        padding: EdgeInsets.all(12),
-        child: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Question(
-                text: questions[selectedQuestion]['text'].toString(),
-                answer: answer,
-                onSelected: () => answerQuestion(point),
-              ),
-              SizedBox(
-                height: 12,
-              ),
-            ],
-          ),
-        ),
-      ),
+    return Column(
+      children: [
+        Question(questions[selectedQuestion]['text'].toString()),
+        ...answer
+            .map((resp) => Answers(
+                text: resp['text'].toString(), onSelected: answerQuestion))
+            .toList()
+      ],
     );
   }
 }

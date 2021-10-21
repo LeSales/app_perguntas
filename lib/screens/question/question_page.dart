@@ -54,24 +54,21 @@ final _questions = const [
 
 class _QuestionPageState extends State<QuestionPage> {
   int _selectedQuestion = 0;
-  int _points = 0;
 
   bool get haveSelectQuestion {
     return _selectedQuestion < _questions.length;
   }
 
+  void answerQuestion() {
+    if (haveSelectQuestion) {
+      setState(() {
+        _selectedQuestion++;
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
-    void answerQuestion(int point) {
-      if (haveSelectQuestion) {
-        setState(() {
-          _selectedQuestion++;
-          _points += point;
-          print(_points);
-        });
-      }
-    }
-
     return WillPopScope(
       onWillPop: () async {
         return false;
