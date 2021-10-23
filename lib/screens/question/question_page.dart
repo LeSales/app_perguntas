@@ -87,7 +87,7 @@ class _QuestionPageState extends State<QuestionPage> {
                 selectedQuestion: _selectedQuestion,
                 answerQuestion: answerQuestion,
               )
-            : Result(),
+            : Result(score: _totalPoints),
       ),
     );
   }
