@@ -5,7 +5,7 @@ import 'package:projeto_perguntas/screens/question/widget/question.dart';
 class Quiz extends StatelessWidget {
   final List<Map<String, Object>> questions;
   final int selectedQuestion;
-  final void Function() answerQuestion;
+  final void Function(int) answerQuestion;
 
   Quiz({
     required this.questions,
@@ -25,10 +25,14 @@ class Quiz extends StatelessWidget {
     return Column(
       children: [
         Question(questions[selectedQuestion]['text'].toString()),
-        ...answer
-            .map((resp) => Answers(
-                text: resp['text'].toString(), onSelected: answerQuestion))
-            .toList()
+        ...answer.map((resp) {
+          return Answers(
+            text: resp['text'].toString(),
+            onSelected: () => answerQuestion(
+              int.parse(resp['point'].toString()),
+            ),
+          );
+        }).toList()
       ],
     );
   }

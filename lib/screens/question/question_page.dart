@@ -7,6 +7,9 @@ class QuestionPage extends StatefulWidget {
   State<QuestionPage> createState() => _QuestionPageState();
 }
 
+int _selectedQuestion = 0;
+int _totalPoints = 0;
+
 final _questions = const [
   {
     'text': "Qual a sua cor favorita?",
@@ -53,18 +56,18 @@ final _questions = const [
 ];
 
 class _QuestionPageState extends State<QuestionPage> {
-  int _selectedQuestion = 0;
-
   bool get haveSelectQuestion {
     return _selectedQuestion < _questions.length;
   }
 
-  void answerQuestion() {
+  void answerQuestion(int point) {
     if (haveSelectQuestion) {
       setState(() {
         _selectedQuestion++;
+        _totalPoints += point;
       });
     }
+    print(_totalPoints);
   }
 
   @override
