@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 
 class Result extends StatelessWidget {
   final int score;
+  final void Function() whenResetQuiz;
 
-  Result({required this.score});
+  Result({required this.score, required this.whenResetQuiz});
 
   String get phraseResult {
     if (score < 8) {
@@ -19,8 +20,14 @@ class Result extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Center(
-      child: Text(phraseResult),
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Center(
+          child: Text(phraseResult),
+        ),
+        ElevatedButton(onPressed: whenResetQuiz, child: Text('Reiniciar'))
+      ],
     );
   }
 }

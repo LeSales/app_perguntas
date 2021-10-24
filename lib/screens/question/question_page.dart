@@ -67,7 +67,13 @@ class _QuestionPageState extends State<QuestionPage> {
         _totalPoints += point;
       });
     }
-    print(_totalPoints);
+  }
+
+  void _resetQuiz() {
+    setState(() {
+      _selectedQuestion = 0;
+      _totalPoints = 0;
+    });
   }
 
   @override
@@ -87,7 +93,10 @@ class _QuestionPageState extends State<QuestionPage> {
                 selectedQuestion: _selectedQuestion,
                 answerQuestion: answerQuestion,
               )
-            : Result(score: _totalPoints),
+            : Result(
+                score: _totalPoints,
+                whenResetQuiz: _resetQuiz,
+              ),
       ),
     );
   }
